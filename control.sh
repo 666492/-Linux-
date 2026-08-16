@@ -1,22 +1,21 @@
-创建 /etc/systemd/system/myapp.service：
-[Unit]
-Description=My Node.js App
-After=network.target mysql.service redis-server.service
+#!/bin/bash
+# 服务启停管理脚本
+# 用法：./control.sh {start|stop|restart|status}
 
-[Service]
-User=deploy
-Group=deploy
-WorkingDirectory=/home/deploy/myapp
-ExecStart=/usr/bin/node app.js
-Restart=always
-RestartSec=10
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=myapp
-Environment=NODE_ENV=production
-
-[Install]
-WantedBy=multi-user.target
-
-启用并启动：
-sudo systemctl daemon-reload; sudo systemctl enable myapp; sudo systemctl start myapp
+case $1 in
+  start)
+    sudo systemctl start myapp
+    ;;
+  stop)
+    sudo systemctl stop myapp
+    ;;
+  restart)
+    sudo systemctl restart myapp
+    ;;
+  status)
+    sudo systemctl status myapp
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status}"
+    exit 1
+esac
