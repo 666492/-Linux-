@@ -1,0 +1,9 @@
+-Linux-/
+├── README.md              # 项目文档（完整版）
+├── app.js                 # Node.js 服务端代码
+├── index.html             # 博客后台管理界面
+├── backup.sh              # 数据库备份脚本
+├── control.sh             # 服务启停管理脚本
+├── myapp.service          # Systemd 服务配置
+├── myapp.nginx.conf       # Nginx 站点配置（供参考）
+└── .gitignore             # 已存在
